@@ -145,12 +145,14 @@ if ($mode eq "collect") {
 }
 
 if ($mode eq "down") {
-	open(IN,"mgnify.out");
-	while ($line = <IN>) {
-		chomp $line;
-		$used{$line}=1 if ($line =~ /^MGYA/);
+	if (-e "mgnify.out") {
+		open(IN,"mgnify.out");
+		while ($line = <IN>) {
+			chomp $line;
+			$used{$line}=1 if ($line =~ /^MGYA/);
+		}
+		close IN;
 	}
-	close IN;
 	open(IN,"mgnify.links");
 	open(OUT,">>mgnify.out");
 	while ($line = <IN>) {
