@@ -100,7 +100,7 @@ if ($mode eq "down") { #usage: Mgnify.pl down folder
 	close OUT;
 	close LOG;
 }
-if ($mode eq "collect") {
+if ($mode eq "collect") { #usage: Mgnify.pl collect folder
 	open(IN,"zcat $ARGV[1]/mgnify.out.gz|");
 	$cnt = 0;
 	while ($line = <IN>) {
@@ -262,7 +262,7 @@ if ($mode eq "grepan") { #this is a filter for the output of collect, specifical
 	close IN;
 }
 
-if ($mode eq "count") { #this is a filter for the output of collect
+if ($mode eq "count") { #usage: Mgnify.pl count folder (#this is a filter for the output of collect)
 	open(IN,"$ARGV[1]/mgnify.links");
 	while ($line = <IN>) {
 		next if ($line =~/^#/);
